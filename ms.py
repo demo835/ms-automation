@@ -7,21 +7,15 @@ COMBINATIONS = [
     {keyboard.Key.shift, keyboard.KeyCode(char='a')},
     {keyboard.Key.shift, keyboard.KeyCode(char='A')},
     {keyboard.Key.shift, keyboard.KeyCode(char='f')},
-    {keyboard.Key.alt, keyboard.KeyCode(char='F')},
-    {keyboard.Key.alt, keyboard.KeyCode(char='q')},
-    {keyboard.Key.alt, keyboard.KeyCode(char='Q')}
+    {keyboard.Key.shift, keyboard.KeyCode(char='F')},
+    {keyboard.Key.shift, keyboard.KeyCode(char='q')},
+    {keyboard.Key.shift, keyboard.KeyCode(char='Q')}
 ]
 
 # The currently active modifiers
 current = set()
 
 # def init():
-    
-
-def execute(current):
-    print("Pressed Shift+A")
-    print("Combo is ", current)
-    # autoGUI()
 
 def on_press(key):
     if any([key in COMBO for COMBO in COMBINATIONS]):
@@ -29,7 +23,25 @@ def on_press(key):
         if any(all(k in current for k in COMBO) for COMBO in COMBINATIONS):
             execute(current)
 
+def execute(current):
+    # print("Combo is ", current)
+    for c in current:
+        print("Pressed ", c)
+        # if isinstance(c, tuple):
+        #     print(c, " is a tuple")
+        # if issubclass(type(c), str):
+        #     print("Got something")
+        # if c is '\'q\'':
+        #     "Quiting program..."
+        #     exit()
+        if c == keyboard.Key.shift:
+            print("4th if works")
+            exit()
+    # autoGUI()
+
 def on_release(key):
+    # if key == keyboard.Key.shift:
+    #     print("4th if works")
     if any([key in COMBO for COMBO in COMBINATIONS]):
         current.remove(key)
 
