@@ -4,12 +4,14 @@ from pynput import keyboard
 
 # The key combination to check
 COMBINATIONS = [
-    {keyboard.Key.shift, keyboard.KeyCode(char='a')},
-    {keyboard.Key.shift, keyboard.KeyCode(char='A')},
-    {keyboard.Key.shift, keyboard.KeyCode(char='f')},
-    {keyboard.Key.shift, keyboard.KeyCode(char='F')},
-    {keyboard.Key.shift, keyboard.KeyCode(char='q')},
-    {keyboard.Key.shift, keyboard.KeyCode(char='Q')}
+    {keyboard.Key.alt_l, keyboard.KeyCode(char='a')},
+    {keyboard.Key.alt_l, keyboard.KeyCode(char='A')},
+    {keyboard.Key.alt_l, keyboard.KeyCode(char='f')},
+    {keyboard.Key.alt_l, keyboard.KeyCode(char='F')},
+    {keyboard.Key.alt_l, keyboard.KeyCode(char='d')},
+    {keyboard.Key.alt_l, keyboard.KeyCode(char='D')},
+    {keyboard.Key.alt_l, keyboard.KeyCode(char='q')},
+    {keyboard.Key.alt_l, keyboard.KeyCode(char='Q')}
 ]
 
 # The currently active modifiers
@@ -26,17 +28,14 @@ def on_press(key):
 def execute(current):
     # print("Combo is ", current)
     for c in current:
-        print("Pressed ", c)
-        # if isinstance(c, tuple):
-        #     print(c, " is a tuple")
-        # if issubclass(type(c), str):
-        #     print("Got something")
-        # if c is '\'q\'':
-        #     "Quiting program..."
-        #     exit()
-        if c == keyboard.Key.shift:
-            print("4th if works")
+        # print("Pressed ", c)
+        # c == keyboard.Key.alt_l and 
+        if c == keyboard.KeyCode(char='f'):
+            print("f is pressed")
+        if c == keyboard.KeyCode(char='q'):
             exit()
+        if c == keyboard.KeyCode(char='d'):
+            print("d is pressed")
     # autoGUI()
 
 def on_release(key):
